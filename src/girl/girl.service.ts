@@ -29,4 +29,12 @@ export class GirlService {
     };
     return resJson;
   }
+  findGirlById(id: number) {
+    const resJson = {
+      name: '翠花',
+      age: 18,
+      id,
+    };
+    return resJson;
+  }
 }
