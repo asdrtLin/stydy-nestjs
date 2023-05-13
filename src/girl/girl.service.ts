@@ -9,15 +9,24 @@ export class GirlService {
       msg: '成功',
     };
   }
-  addGirls() {
+  addGirls(data) {
     return {
       code: 200,
       data: {
         id: 3,
         name: '大力',
         age: 27,
+        data,
       },
       msg: '添加成功',
     };
+  }
+  getGirlById(id: number) {
+    const resJson = {
+      name: '翠花',
+      age: 18,
+      id,
+    };
+    return resJson;
   }
 }
