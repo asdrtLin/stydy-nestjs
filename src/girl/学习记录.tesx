@@ -1,0 +1,7 @@
+nest g module girl --no-spec // 创建module
+nest g service girl --no-spec // 创建service
+nest g controller girl --no-spec // 创建controller
+安装顺序执行三条命令。快速建立文件
+module 模块
+controller 控制器 // 路由
+service 服务 // 处理业务逻辑
