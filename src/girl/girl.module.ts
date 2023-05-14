@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   // 引入表
   imports: [TypeOrmModule.forFeature([Girl])],
+  exports: [TypeOrmModule],
   providers: [GirlService],
   controllers: [GirlController],
 })
