@@ -72,4 +72,9 @@ export class GirlController {
     console.log('b: ', b);
     return this.girlService.getGirlByName(name);
   }
+
+  @Get('/hotLoad')
+  hotLoad(): any {
+    return 'HotLoad Function1';
+  }
 }
