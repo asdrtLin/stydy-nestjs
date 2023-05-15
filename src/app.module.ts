@@ -5,6 +5,7 @@ import { GirlModule } from './girl/girl.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoyModule } from './boy/boy.module';
 import { ConfigModule } from './config/config.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ConfigModule } from './config/config.module';
     GirlModule,
     BoyModule,
     ConfigModule.forRoot('洗浴'),
+    OrderModule,
   ],
   controllers: [GirlController],
   providers: [GirlService],

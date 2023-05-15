@@ -4,8 +4,10 @@ import {
   Entity,
   Generated,
   PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
-
+import { Order } from 'src/order/entities/order.entity';
 // girl表
 @Entity()
 export class Girl {
@@ -27,4 +29,7 @@ export class Girl {
   // uuid 列
   // @Generated('uuid')
   // uuid: string;
+
+  @OneToMany(() => Order, (order) => order.girl)
+  order: Order[]; // 一对多
 }
