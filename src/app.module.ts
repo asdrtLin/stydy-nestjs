@@ -26,7 +26,7 @@ import { ConfigModule } from './config/config.module';
     }),
     GirlModule,
     BoyModule,
-    ConfigModule,
+    ConfigModule.forRoot('洗浴'),
   ],
   controllers: [GirlController],
   providers: [GirlService],
