@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
 import { GirlService } from './girl.service';
 import { GirlController } from './girl.controller';
 import { Girl } from './entities/girl.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CounterMiddleware } from 'src/counter/counter.middleware';
 
 @Module({
   // 引入表
@@ -46,4 +47,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   ],
   controllers: [GirlController],
 })
-export class GirlModule {}
+export class GirlModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    // girl 路由下调用中间件
+    consumer.apply(CounterMiddleware).forRoutes('girl');
+  }
+}
