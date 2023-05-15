@@ -18,6 +18,8 @@ import { BoyService } from 'src/boy/boy.service';
 @Controller('girl')
 export class GirlController {
   constructor(
+    @Inject('Config') private readonly shopName: { shopName: string },
+
     @Inject('girl') private readonly girlService: GirlService,
     @Inject('girlArray') private readonly girlArray: string[],
     @Inject('girlFC') private readonly girlFC: () => void,
@@ -90,5 +92,10 @@ export class GirlController {
   @Get('/getBoy')
   getBoy() {
     return this.boyService.findAll();
+  }
+
+  @Get('/global/module')
+  getGlobalModule() {
+    return this.shopName;
   }
 }
