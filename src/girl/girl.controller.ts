@@ -9,13 +9,18 @@ import {
   Headers,
   Delete,
   Put,
+  Inject,
 } from '@nestjs/common';
 import { Girl } from './entities/girl.entity';
 import { GirlService } from './girl.service';
 
 @Controller('girl')
 export class GirlController {
-  constructor(private readonly girlService: GirlService) {}
+  constructor(
+    @Inject('girl') private readonly girlService: GirlService,
+    @Inject('girlArray') private readonly girlArray: string[],
+    @Inject('girlFC') private readonly girlFC: () => void,
+  ) {}
   // 相当于 this.girlService = new GirlService();
   // @Get()
   // getGirls(): ReturnType<GirlService['getGirls']> {
@@ -61,6 +66,10 @@ export class GirlController {
 
   @Get('findGirlByName/:name')
   findGirlByName(@Param('name') name: string) {
+    const a = this.girlArray;
+    console.log('a: ', a);
+    const b = this.girlFC;
+    console.log('b: ', b);
     return this.girlService.getGirlByName(name);
   }
 }

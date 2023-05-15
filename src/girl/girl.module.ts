@@ -7,8 +7,43 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   // 引入表
   imports: [TypeOrmModule.forFeature([Girl])],
-  exports: [TypeOrmModule],
-  providers: [GirlService],
+  exports: [
+    TypeOrmModule,
+    {
+      provide: 'girl',
+      useClass: GirlService,
+    },
+    {
+      provide: 'girlArray',
+      useValue: ['小红', '小村'],
+    },
+    {
+      provide: 'girlFC',
+      useFactory() {
+        console.log('useFactory-------');
+      },
+    },
+  ],
+  providers: [
+    {
+      provide: 'girl',
+      // 传递class
+      useClass: GirlService,
+    },
+    {
+      provide: 'girlArray',
+      // 传递值
+      useValue: ['小红', '小村'],
+    },
+    {
+      provide: 'girlFC',
+      // 传递函数，直接调用，获取返回值
+      useFactory() {
+        console.log('useFactory-------');
+        return 'useFactory';
+      },
+    },
+  ],
   controllers: [GirlController],
 })
 export class GirlModule {}
