@@ -77,4 +77,11 @@ export class GirlController {
   hotLoad(): any {
     return 'HotLoad Function1';
   }
+
+  @Get('/corsTest')
+  corsTest() {
+    return {
+      message: '测试跨域',
+    };
+  }
 }

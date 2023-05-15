@@ -1,4 +1,9 @@
-import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import {
+  Module,
+  MiddlewareConsumer,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { GirlService } from './girl.service';
 import { GirlController } from './girl.controller';
 import { Girl } from './entities/girl.entity';
@@ -50,6 +55,10 @@ import { CounterMiddleware } from 'src/counter/counter.middleware';
 export class GirlModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // girl 路由下调用中间件
-    consumer.apply(CounterMiddleware).forRoutes('girl');
+    consumer.apply(CounterMiddleware).forRoutes({
+      // girl 并且是get使用中间件
+      path: 'girl',
+      method: RequestMethod.GET,
+    });
   }
 }
