@@ -9,6 +9,7 @@ import { GirlController } from './girl.controller';
 import { Girl } from './entities/girl.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CounterMiddleware } from 'src/counter/counter.middleware';
+import { BoyService } from 'src/boy/boy.service';
 
 @Module({
   // 引入表
@@ -31,6 +32,7 @@ import { CounterMiddleware } from 'src/counter/counter.middleware';
     },
   ],
   providers: [
+    BoyService,
     {
       provide: 'girl',
       // 传递class

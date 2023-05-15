@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { Girl } from './entities/girl.entity';
 import { GirlService } from './girl.service';
+import { BoyService } from 'src/boy/boy.service';
 
 @Controller('girl')
 export class GirlController {
@@ -20,6 +21,7 @@ export class GirlController {
     @Inject('girl') private readonly girlService: GirlService,
     @Inject('girlArray') private readonly girlArray: string[],
     @Inject('girlFC') private readonly girlFC: () => void,
+    private readonly boyService: BoyService,
   ) {}
   // 相当于 this.girlService = new GirlService();
   // @Get()
@@ -83,5 +85,10 @@ export class GirlController {
     return {
       message: '测试跨域',
     };
+  }
+
+  @Get('/getBoy')
+  getBoy() {
+    return this.boyService.findAll();
   }
 }

@@ -3,6 +3,7 @@ import { GirlService } from './girl/girl.service';
 import { GirlController } from './girl/girl.controller';
 import { GirlModule } from './girl/girl.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BoyModule } from './boy/boy.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -22,6 +23,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
     }),
     GirlModule,
+    BoyModule,
   ],
   controllers: [GirlController],
   providers: [GirlService],
