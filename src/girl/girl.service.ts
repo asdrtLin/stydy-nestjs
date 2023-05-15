@@ -2,11 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
 import { Girl } from './entities/girl.entity';
+import { GirlDetail } from './entities/girlDetail.entity';
 
 @Injectable()
 export class GirlService {
   constructor(
     @InjectRepository(Girl) private readonly girls: Repository<Girl>,
+    @InjectRepository(GirlDetail)
+    private readonly girlsDetail: Repository<GirlDetail>,
   ) {}
   /** 添加 */
   addGirl(girl: Girl) {

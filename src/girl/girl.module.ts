@@ -10,10 +10,11 @@ import { Girl } from './entities/girl.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CounterMiddleware } from 'src/counter/counter.middleware';
 import { BoyService } from 'src/boy/boy.service';
+import { GirlDetail } from './entities/girlDetail.entity';
 
 @Module({
   // 引入表
-  imports: [TypeOrmModule.forFeature([Girl])],
+  imports: [TypeOrmModule.forFeature([Girl, GirlDetail])],
   exports: [
     TypeOrmModule,
     {
